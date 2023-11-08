@@ -7,7 +7,7 @@ export const buildRoutes = (
   parent_id = 0,
   children = []
 ) => {
-  user_menus.forEach((item) => {
+  user_menus.forEach?.((item) => {
     if (item.parent_id === parent_id)
       children.push({
         ...item,

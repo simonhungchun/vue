@@ -19,9 +19,7 @@ request.interceptors.request.use((config) => {
 });
 
 request.interceptors.response.use(
-  (response) => {
-    console.log(response);
-  },
+  (response) => response,
   (error) => {
     if (error.response.status === 401) {
       storejs.remove("auth");

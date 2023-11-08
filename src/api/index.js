@@ -1,7 +1,7 @@
 import request from "@/utils/request";
 
 export const login = async (data) =>
-  (await request.post("/api/v1/users/login", data)).data.data;
+  (await request.post("/api/v1/users/login", data))?.data.data;
 // 以什么样的方式携带登陆凭证到后台？
 // 上一个项目使用的 header.cookie  (js-cookie)
 // headers.Authorization = `Bearer 凭据`

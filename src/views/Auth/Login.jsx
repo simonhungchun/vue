@@ -12,9 +12,7 @@ import {
 import storejs from "storejs";
 import { useRouter } from "vue-router";
 import { login, user_info, user_menus } from "@/api";
-// import { buildRoutes } from "@/utils/buildRoutes";
 import { createDynamicRoutes } from "@/utils/dynamicRoutes";
-// import router from "@/router";
 
 window.getUserInfo = user_info;
 
@@ -29,14 +27,13 @@ export default {
           storejs.set("user_info", user_info);
           storejs.set("user_menus", user_menus);
           createDynamicRoutes();
-          // console.log(buildRoutes());
-          // router.replace("/home");
         },
       }
     );
     const { run: onFinish } = useRequest(login, {
       manual: true,
       onSuccess(auth) {
+        // console.log("auth", auth);
         storejs.set("auth", auth);
         onLoginedCallback();
         message.success("登陆成功！");
