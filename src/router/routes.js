@@ -17,6 +17,11 @@ export default [
       },
     ],
   },
+  {
+    path: "/unauthorization",
+    name: "Unauthorization",
+    component: () => import("@/views/Unauthorization.vue"),
+  },
 ];
 
 // 扁平化数据转树状结构

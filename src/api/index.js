@@ -6,7 +6,7 @@ export const login = async (data) =>
 // 上一个项目使用的 header.cookie  (js-cookie)
 // headers.Authorization = `Bearer 凭据`
 export const user_info = async () =>
-  (await request.get("/api/v1/users/user_info")).data.data;
+  (await request.get("/api/v1/users/user_info"))?.data.data;
 
 export const user_menus = async () =>
-  (await request.get("/api/v1/menus/user_menus")).data.data;
+  (await request.get("/api/v1/menus/user_menus"))?.data.data;

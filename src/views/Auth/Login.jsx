@@ -16,6 +16,8 @@ import { login, user_info, user_menus } from "@/api";
 import { createDynamicRoutes } from "@/utils/dynamicRoutes";
 // import router from "@/router";
 
+window.getUserInfo = user_info;
+
 export default {
   setup() {
     const router = useRouter();

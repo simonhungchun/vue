@@ -1,5 +1,7 @@
 import axios from "axios";
 import storejs from "storejs";
+import router from "@/router";
+import { message } from "ant-design-vue";
 
 const request = axios.create({
   baseURL: "",
@@ -15,5 +17,20 @@ request.interceptors.request.use((config) => {
   }
   return config;
 });
+
+request.interceptors.response.use(
+  (response) => {
+    console.log(response);
+  },
+  (error) => {
+    if (error.response.status === 401) {
+      storejs.remove("auth");
+      storejs.remove("user_info");
+      storejs.set("user_menus", []);
+      message.error("认证失败，请重新登录！");
+      router.replace({ path: "/auth/register" });
+    }
+  }
+);
 
 export default request;
