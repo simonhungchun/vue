@@ -2,9 +2,9 @@
   <h1>ProjectInvite</h1>
 </template>
 <script>
-  export default{
-    setup(){
-      
+  export default {
+    setup() {
+
     }
   }
 </script>

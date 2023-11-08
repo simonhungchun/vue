@@ -1,5 +1,5 @@
 <template>
-  <h1>ProjectInvite</h1>
+  <h1>projectList</h1>
 </template>
 <script>
   export default{

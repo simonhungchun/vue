@@ -10,14 +10,15 @@ import {
   message,
 } from "ant-design-vue";
 import storejs from "storejs";
-// import { useRouter } from "vue-router";
+import { useRouter } from "vue-router";
 import { login, user_info, user_menus } from "@/api";
 // import { buildRoutes } from "@/utils/buildRoutes";
 import { createDynamicRoutes } from "@/utils/dynamicRoutes";
+// import router from "@/router";
 
 export default {
   setup() {
-    // const router = useRouter();
+    const router = useRouter();
     const { run: onLoginedCallback } = useRequest(
       () => Promise.all([user_info(), user_menus()]),
       {
@@ -47,6 +48,7 @@ export default {
     });
     return () => (
       <div>
+        <Button onClick={() => router.push("/")}>跳转</Button>
         <h1>登陆</h1>
         <Form
           model={formState}

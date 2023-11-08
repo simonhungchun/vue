@@ -1,5 +1,4 @@
 export default [
-  { path: "/", redirect: "/auth" },
   {
     path: "/auth",
     name: "auth",

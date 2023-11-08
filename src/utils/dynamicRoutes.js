@@ -2,5 +2,6 @@ import router from "@/router";
 import { buildRoutes } from "@/utils/buildRoutes";
 export const createDynamicRoutes = () => {
   const dynamicRoutes = buildRoutes();
-  dynamicRoutes.forEach((route) => router.push(route));
+  // todo调用router.addRoute添加动态路由！！！
+  dynamicRoutes.forEach((route) => router.addRoute(route));
 };
