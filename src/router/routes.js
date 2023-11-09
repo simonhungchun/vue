@@ -8,11 +8,13 @@ export default [
       {
         path: "login",
         name: "login",
+        meta: { title: "登陆" },
         component: () => import("@/views/Auth/Login"),
       },
       {
         path: "register",
         name: "register",
+        meta: { title: "注册" },
         component: () => import("@/views/Auth/Register"),
       },
     ],
