@@ -1,5 +1,4 @@
 import { reactive } from "vue";
-import { useRequest } from "vue-request";
 import {
   Form,
   FormItem,
@@ -7,39 +6,15 @@ import {
   InputPassword,
   Button,
   Checkbox,
-  message,
 } from "ant-design-vue";
-import storejs from "storejs";
 import { useRouter } from "vue-router";
-import { login, user_info, user_menus } from "@/api";
-import { createDynamicRoutes } from "@/utils/dynamicRoutes";
-
-window.getUserInfo = user_info;
+import { useUser } from "@/store/user";
 
 export default {
   setup() {
+    // 不能对user（reactive）解构 会失去响应式
+    const user = useUser();
     const router = useRouter();
-    const { run: onLoginedCallback } = useRequest(
-      () => Promise.all([user_info(), user_menus()]),
-      {
-        manual: true,
-        onSuccess([user_info, user_menus]) {
-          storejs.set("user_info", user_info);
-          storejs.set("user_menus", user_menus);
-          createDynamicRoutes();
-        },
-      }
-    );
-    const { run: onFinish } = useRequest(login, {
-      manual: true,
-      onSuccess(auth) {
-        // console.log("auth", auth);
-        storejs.set("auth", auth);
-        onLoginedCallback();
-        message.success("登陆成功！");
-      },
-    });
-
     const formState = reactive({
       username: "",
       password: "",
@@ -55,7 +30,7 @@ export default {
           label-col={{ span: 8 }}
           wrapper-col={{ span: 16 }}
           autocomplete="off"
-          onFinish={onFinish}
+          onFinish={user.userLogin}
         >
           <FormItem
             label="用户名"

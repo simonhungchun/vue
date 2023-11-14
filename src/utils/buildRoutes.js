@@ -1,8 +1,5 @@
-import storejs from "storejs";
 // 将路径转换为一个异步加载的组件！
 import { asyncLoadComponent } from "@/utils/asyncLoadComponent";
-const user_menus_list = storejs.get("user_menus"); // undefined
-console.log(user_menus_list);
 // 为什么定义buildRoutes函数
 // 在一个数组集合中把具有指定属性值的对象找出来
 // function findItem(source, target) {
@@ -25,12 +22,7 @@ console.log(user_menus_list);
 //   return res;
 // }
 // console.log(findItem(user_menus_list, 0));
-export const buildRoutes = (
-  user_menus = user_menus_list,
-  parent_id = 0,
-  children = []
-) => {
-  console.log(user_menus);
+export const buildRoutes = (user_menus, parent_id = 0, children = []) => {
   user_menus?.forEach?.((item) => {
     if (item.parent_id === parent_id)
       children.push({

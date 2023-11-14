@@ -1,7 +1,11 @@
 import { createApp } from "vue";
+import { createPinia } from "pinia";
+import persistedstate from "pinia-plugin-persistedstate";
 import "normalize.css";
 import App from "@/App";
 import router from "@/router";
 const app = createApp(App);
-app.use(router);
+const rootStore = createPinia();
+rootStore.use(persistedstate);
+app.use(router).use(rootStore);
 app.mount("#app");
